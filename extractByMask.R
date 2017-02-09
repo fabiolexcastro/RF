@@ -1,8 +1,8 @@
 library(raster)
 library(rgdal)
 
-path    <- "D:/_gisse2h_2030/2020_2049"
-mask    <- raster("D:/CC/_bd/_eastAfrica/_raster/_base/studyarea_30s")
+path    <- " "
+mask    <- raster(" /studyarea_30s")
 
 files   <- list.files(path, full.names = TRUE)
 toMatch <- c("bio", "prec", "tm")
