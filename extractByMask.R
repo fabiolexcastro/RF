@@ -15,7 +15,7 @@ layers  <- unstack(cut)
 
 for(i in 1:length(layers)){
   
-  writeRaster(layers[[i]], paste0("D:/CC/_bd/_eastAfrica/_raster/example.asc")  
+  writeRaster(layers[[i]], paste0(" /", names(layers[[i]]), ".asc"))    
   
 }
 
