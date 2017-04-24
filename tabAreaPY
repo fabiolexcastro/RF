@@ -1,0 +1,27 @@
+# Import system modules
+import arcpy
+from arcpy import env
+from arcpy.sa import *
+
+# Set environment settings
+env.workspace = r"W:\_eastAfrica\_RF\_run1\_results\_process\_diff"
+env.extent = "dif_30_prjArcInt.tif"
+env.snapRaster = "dif_30_prjArcInt.tif"
+
+# Set local variables
+inZoneData = "dif_30_prjArcInt.tif"
+desc = arcpy.Describe(inZoneData)
+zoneField = "Value"
+inClassData = r"W:\_eastAfrica\_shp\_base\MWI_adm1_prj.shp" 
+classField = "NAME_1"
+outTable = r"W:\_eastAfrica\_tables\_tabulateArea\_run1\tabArea_dif30PY2.dbf"
+arcpy.processingCellSize = desc.meanCellHeight
+
+print 'Process'
+# Check out the ArcGIS Spatial Analyst extension license
+arcpy.CheckOutExtension("Spatial")
+
+# Execute TabulateArea
+TabulateArea(inZoneData, zoneField, inClassData, classField, outTable, arcpy.processingCellSize)
+
+print 'Finish'
